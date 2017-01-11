@@ -1,0 +1,26 @@
+title: LESPINSIDE
+description: LESPINSIDE tech blog
+
+url: http://blog.lespinside.com
+baseurl: ""
+paginate_path: "page:num/"
+permalink: :title/
+
+markdown: kramdown
+highlighter: rouge
+gems: [jekyll-paginate]
+paginate: 5
+
+navigation:
+ - title: Home
+   url: /index.html
+ - title: About
+   url: /about
+ - title: Archive
+   url: /archive
+
+social:
+   github: lespinsideg
+   email: lespinsideg@gmail.com
+
+google_analytics: "UA-55170010-2"
