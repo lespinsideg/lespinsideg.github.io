@@ -1,9 +1,12 @@
-Java Reference - SoftReference
-===
+---
+layout: post
+title: Java Reference - SoftReference
+---
 
 자바에는 객체에 대하여 strong, soft, weak, phantom 4가지 레퍼런스가 존재하며 각 레퍼런스의 유무에 따라 객체의 reachability가 결정된다. 객체의 reachability는 가비지 컬렉터의 수집 기준이 되는데 여기에 대해서는 네이버 D2의 [Java Reference와 GC](http://d2.naver.com/helloworld/329631)에 잘 설명되어 있다. 그렇다면 각 레퍼런스 타입은 언제 사용될까? SoftReference부터 찾아보았다.
 
 ## SoftReference
+
 ### joda-time
 [joda-time](https://github.com/JodaOrg/joda-time)은 Java의 날짜와 시간에 대한 클래스들을 대체하기 위해 만들어진 오픈소스 라이브러리이다. joda-time에서는 `DateTimeZone` 캐싱에 `SoftReference`를 사용한다.
 
@@ -46,6 +49,7 @@ spring framework에서는 `ConcurrentReferenceHashMap` 이라는 자체 `Concurr
 Spring framework 전반에서는 `CocurrentReferenceHashMap`을 캐시로 사용하고 있는데 주로 비용이 큰 reflection에 사용하고 있다.
 
 > org.springframework.core.GenericTypeResolver
+
 ```java
 /** Cache from Class to TypeVariable Map */
 	@SuppressWarnings("rawtypes")
@@ -54,12 +58,14 @@ Spring framework 전반에서는 `CocurrentReferenceHashMap`을 캐시로 사용
 ```
 
 > org.springframework.core.ResolvableType
+
 ```java
 private static final ConcurrentReferenceHashMap<ResolvableType, ResolvableType> cache =
 			new ConcurrentReferenceHashMap<>(256);
 ```
 
 > org.springframework.util.ReflectionUtils
+
 ```java
 	/**
 	 * Cache for {@link Class#getDeclaredMethods()} plus equivalent default methods
@@ -76,6 +82,7 @@ private static final ConcurrentReferenceHashMap<ResolvableType, ResolvableType> 
 
 ### 캐시로 사용해도 될까?
 [oracle javadoc](https://docs.oracle.com/javase/8/docs/api/java/lang/ref/SoftReference.html)에는 `SoftReference`가 주로 memory sensitive cache에 사용된다고 적혀있다.
+
 > Soft reference objects, which are cleared at the discretion of the garbage collector in response to memory demand. Soft references are most often used to implement memory-sensitive caches.
 
 [안드로이드 개발 참조문서](https://developer.android.com/reference/java/lang/ref/SoftReference.html)에서는 `SoftReference`를 캐싱에 사용하하는 것은 비효율적이라고 말한다.
@@ -87,6 +94,7 @@ The lack of information on the value to your application of each reference limit
 대신 [android.util.LruCache](https://developer.android.com/reference/android/util/LruCache.html)를 사용할 것을 권장하는데 `LruCache`는 생성 시 지정한 갯수만큼 strong reference를 유지하는 방식으로 캐시를 구현하였다.
 
  [안드로이드 개발자](http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html#memory-cache) 페이지에는 Bitmap caching과 관련하여 다음과 같은 내용도 있다.
+
 > Note: In the past, a popular memory cache implementation was a SoftReference or WeakReference bitmap cache, however this is not recommended. Starting from Android 2.3 (API Level 9) the garbage collector is more aggressive with collecting soft/weak references which makes them fairly ineffective. In addition, prior to Android 3.0 (API Level 11), the backing data of a bitmap was stored in native memory which is not released in a predictable manner, potentially causing an application to briefly exceed its memory limits and crash.
 
 모든 경우에 `SoftReference`를 캐시로 사용하는 것이 부적절하다기 보다는 안드로이드의 적극적인 GC 특성 상 `SoftReference`가 효과적이지 못하다는 이야기인 것 같다.

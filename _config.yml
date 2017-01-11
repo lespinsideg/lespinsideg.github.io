@@ -16,8 +16,8 @@ navigation:
    url: /index.html
  - title: About
    url: /about
- - title: Archive
-   url: /archive
+# - title: Archive
+#   url: /archive
 
 social:
    github: lespinsideg
