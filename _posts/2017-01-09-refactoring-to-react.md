@@ -1,15 +1,15 @@
 ---
-layout: post 
+layout: post
 title: 리액티브하게 리팩토링하기 - JDBC 마이그레이션 해부
 ---
 
-본 글은 [Nicolae Marasolu](https://www.infoq.com/author/Nicolae-Marasoiu)의 [Refactoring to Reactive - Anatomy of a JDBC migration](https://www.infoq.com/articles/Refactoring-Reactive-JDBC) 번역한 것입니다.
+본 글은 [Nicolae Marasolu](https://www.infoq.com/author/Nicolae-Marasoiu)의 [Refactoring to Reactive - Anatomy of a JDBC migration](https://www.infoq.com/articles/Refactoring-Reactive-JDBC)를 번역한 것입니다.
 
 ## 핵심 요약
 
 * 리액티브 프로그래밍은 러닝 커브가 있으며 완전한 이해를 위해서 경험, 연습 그리고 열린 마음이 필요하다.
 * 어떠한 애플리케이션이든 점진적으로 리액티브 프로그래밍을 도입할 수 있다.
-* 리액티브 프로그래밍과 Netty와 같은 논 블로킹 라이브러리들은 확장성과 탄력성을 증가시키고 개발, 운영 비용을 낮춘다.(자세한 내용은 [리액티브 선언문](http://www.reactivemanifesto.org/) 참고)
+* 리액티브 프로그래밍과 Netty와 같은 논 블로킹 라이브러리들은 확장성과 탄력성을 증가시키고 개발, 운영 비용을 낮춘다.(자세한 내용은 [리액티브 선언문](http://www.reactivemanifesto.org/) 참고 - [번역](/the-reactive-manifesto/))
 * 퓨처 값의 스트림을 다른 퓨처 스트림으로 변형하는 것은 강력한 프로그래밍 패러다임이며 연습에 따른 큰 보상이 따른다.
 * 결합성은 함수형 프로그래밍의 특징이다. 이 글에서 우리는 Observable의 flatMap 연산자를 이용한 모나드 결합을 살펴본다.
 
