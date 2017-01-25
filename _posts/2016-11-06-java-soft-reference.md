@@ -44,7 +44,7 @@ public DateTimeZone getZone(String id) {
 위의 코드는 joda-time의 [ZoneInfoProvider.java](https://github.com/JodaOrg/joda-time/blob/master/src/main/java/org/joda/time/tz/ZoneInfoProvider.java)의 일부분이다. `getZone`은 파라미터로 받은 id에 대한 `DateTimeZone`을 반환하는 메서드이다. `ZoneInfoProvider`의 프라이빗 필드인 `iZoneInfoMap`에는 id를 키 값으로 이미 로드한 `DateTimeZone`에 대한 `SoftReference`나 아직 로드하지 않은 id 문자열이 값으로 가지고 있다. 그리고 아직 로드하지 않은 `DateTimeZone`이나 이미 로드했지만 GC된 `DateTimeZone`에 대해서 `loadZoneData`를 호출하여 반환한다.
 
 ### spring framework
-spring framework에서는 `ConcurrentReferenceHashMap` 이라는 자체 `ConcurrentHashMap`을 제공한다. `Collections.synchronizedMap(new WeakHashMap<K, Reference<V>>())`을 대체하기 만들어진 클래스로 내부적으로 기본 `SoftReference`와 `WeakReference`를 상속받은 `SoftEntryReference`와 `WeakEntryReference`를 사용하고 있다.
+spring framework에서는 `ConcurrentReferenceHashMap` 이라는 자체 `ConcurrentHashMap`을 제공한다. `Collections.synchronizedMap(new WeakHashMap<K, Reference<V>>())`을 대체하기 위해 만들어진 클래스로 내부적으로 기본 `SoftReference`와 `WeakReference`를 상속받은 `SoftEntryReference`와 `WeakEntryReference`를 사용하고 있다.
 
 Spring framework 전반에서는 `CocurrentReferenceHashMap`을 캐시로 사용하고 있는데 주로 비용이 큰 reflection에 사용하고 있다.
 
@@ -85,7 +85,7 @@ private static final ConcurrentReferenceHashMap<ResolvableType, ResolvableType> 
 
 > Soft reference objects, which are cleared at the discretion of the garbage collector in response to memory demand. Soft references are most often used to implement memory-sensitive caches.
 
-[안드로이드 개발 참조문서](https://developer.android.com/reference/java/lang/ref/SoftReference.html)에서는 `SoftReference`를 캐싱에 사용하하는 것은 비효율적이라고 말한다.
+[안드로이드 개발 참조문서](https://developer.android.com/reference/java/lang/ref/SoftReference.html)에서는 `SoftReference`를 캐싱에 사용하는 것은 비효율적이라고 말한다.
 
 > Avoid Soft References for Caching
 In practice, soft references are inefficient for caching. The runtime doesn't have enough information on which references to clear and which to keep. Most fatally, it doesn't know what to do when given the choice between clearing a soft reference and growing the heap.
