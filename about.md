@@ -18,9 +18,9 @@ title: About LESPINSIDE
 	<ul>
 		<li><a href="https://github.com/reactivemanifesto">The Reactive Manifesto</a></li>
   	</ul>
-    <h3>social links</h3>
+	<h3>social links</h3>
 	<ul>
-		<li><a href="http://github.com/lespinsideg">Github</a></li>
-        <li><a href="http://www.linkedin.com/in/lespinside">Linkedin</a></li>
-    </ul>
+	<li><a href="http://github.com/lespinsideg">Github</a></li>
+	<li><a href="http://www.linkedin.com/in/lespinside">Linkedin</a></li>
+	</ul>
 </div>
