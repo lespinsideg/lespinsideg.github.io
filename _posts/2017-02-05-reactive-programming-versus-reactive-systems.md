@@ -2,8 +2,7 @@
 layout: post
 title: 리액티브 프로그래밍 대 리액티브 시스템
 ---
-본 글은 [Lightbend](https://www.lightbend.com/)사의 Jonas Bonér와 Viktor Klang가 작성한 [Reactive Programming versus Reactive Systems
-- Landing on a set of simple Reactive design principles in a sea of constant confusion and overloaded expectations](https://www.lightbend.com/reactive-programming-versus-reactive-systems)을 번역한 것입니다.
+본 글은 [Lightbend](https://www.lightbend.com/)사의 Jonas Bonér와 Viktor Klang가 작성한 [Reactive Programming versus Reactive Systems- Landing on a set of simple Reactive design principles in a sea of constant confusion and overloaded expectations](https://www.lightbend.com/reactive-programming-versus-reactive-systems)을 번역한 것입니다.
 
 ### 요약
 2013년 [리액티브 선언문](http://www.reactivemanifesto.org/ko)을 공동 저작할 때부터 지금까지 우리는 리액티브라는 주제가 소수의 회사에서 프린지(fringe) 프로젝트 수행에만 사용하는 사실상 애플리케이션을 제작하는 기술로 인정받지 못하던 것에서부터 미들웨어 분야의 수많은 영향력 있는 회사들이 사용하는 전반적인 플랫폼 전략의 일부가 되는 것을 목격했다.
